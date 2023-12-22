@@ -3,6 +3,6 @@ try:
 except ImportError:
     __version__ = "unknown"
 
-from ._reader import napari_get_reader
+from ._reader import napari_get_reader, reader_function_with_args
 
-__all__ = ["napari_get_reader"]
+__all__ = ["napari_get_reader", "reader_function_with_args"]
