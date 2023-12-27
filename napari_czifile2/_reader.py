@@ -1,3 +1,4 @@
+from __future__ import annotations
 from typing import Union, Optional, List, Tuple
 from multiprocessing import cpu_count
 from pathlib import Path
