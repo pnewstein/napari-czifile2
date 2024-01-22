@@ -3,6 +3,6 @@ try:
 except ImportError:
     __version__ = "unknown"
 
-from ._reader import napari_get_reader, reader_function_with_args
+from ._reader import napari_get_reader, reader_function_with_args, SceneIndexOutOfRange
 
 __all__ = ["napari_get_reader", "reader_function_with_args"]

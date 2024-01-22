@@ -10,6 +10,10 @@ from .io import CZISceneFile
 import napari
 
 
+class SceneIndexOutOfRange(Exception):
+    pass
+
+
 def napari_get_reader(path):
     if isinstance(path, list):
         if any(Path(p).suffix.lower() != ".czi" for p in path):
@@ -37,6 +41,8 @@ def reader_function_with_args(
         paths = [paths]
     for path in paths:
         num_scenes = CZISceneFile.get_num_scenes(path)
+        if scene_index >= num_scenes:
+            raise SceneIndexOutOfRange(f"{scene_index} is an invalid for {num_scenes} scenes")
         if num_scenes != 1 and next_scene_inds is None:
             # TODO ask the user which ones to load
             next_scene_inds = list(range(num_scenes))  # for now asssume load all
