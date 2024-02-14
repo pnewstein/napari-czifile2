@@ -68,7 +68,7 @@ def reader_function_with_args(
             metadata = {
                 "rgb": f.is_rgb,
                 "channel_axis": 2,
-                "translate": (f.pos_t_seconds, f.pos_z_um, f.pos_y_um, f.pos_x_um),
+                # "translate": (f.pos_t_seconds, f.pos_z_um, f.pos_y_um, f.pos_x_um),
                 "scale": (
                     f.scale_t_seconds,
                     f.scale_z_um,
