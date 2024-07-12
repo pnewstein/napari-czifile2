@@ -76,14 +76,10 @@ def reader_function_with_args(
                     f.scale_x_um,
                 ),
                 "contrast_limits": contrast_limits,
+                "metadata": {"czi_metadata": f.metadata(), "scene_index": scene_index},
             }
             if f.channel_names is not None:
-                if num_scenes == 1:
-                    metadata["name"] = f.channel_names
-                elif num_scenes > 1:
-                    metadata["name"] = [
-                        f"S{scene_index:02d} {channel_name}"
-                        for channel_name in f.channel_names
-                    ]
+                channel_names = [n.split("-")[0] if "-" in n else n for n in f.channel_names]
+                metadata["name"] = channel_names
         layer_data.append((data, metadata, "image"))
     return layer_data
