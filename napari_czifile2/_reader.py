@@ -79,7 +79,8 @@ def reader_function_with_args(
                 "metadata": {"czi_metadata": f.metadata(), "scene_index": scene_index},
             }
             if f.channel_names is not None:
-                channel_names = [n.split("-")[0] if "-" in n else n for n in f.channel_names]
+                flour_name = [n.split('-')[0] if "-" in n else n for n in f.channel_names]
+                channel_names = [f"raw-{f}-channel" for f in flour_name]
                 metadata["name"] = channel_names
         layer_data.append((data, metadata, "image"))
     return layer_data
