@@ -1,10 +1,10 @@
-from pathlib import Path
-from typing import Iterable, List, Optional, Union
-from xml.etree import ElementTree
 from functools import cached_property
+from pathlib import Path
+from typing import List, Optional, Union
+from xml.etree import ElementTree
 
 import numpy as np
-from czifile import CziFile, CziDirectoryEntryDV
+from czifile import CziDirectoryEntryDV, CziFile
 
 
 class CZISceneFile(CziFile):
@@ -71,7 +71,6 @@ class CZISceneFile(CziFile):
         return "0" in self.axes and self.scenes[self.scene_index].sizes["0"] > 1
 
     def as_tzcyx0_array(self, *args, **kwargs) -> np.ndarray:
-
         data = self.asarray(*args, **kwargs)
         tzcyx0_axis_indices = []
         if "T" in self.axes:
@@ -102,7 +101,6 @@ class CZISceneFile(CziFile):
         data = data.transpose(tzcyx0_axis_indices)
         data.shape = data.shape[:6]
         return data
-
 
     def _get_scale(self, dimension: str, multiplier: float = 1.0):
         scale_element = self._metadata_xml.find(
