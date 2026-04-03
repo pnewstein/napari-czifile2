@@ -4,8 +4,7 @@ from xml.etree import ElementTree
 from functools import cached_property
 
 import numpy as np
-from czifile import CziFile, CziDimensionEntryDV1, CziDirectoryEntryDV
-
+from czifile import CziFile, CziDirectoryEntryDV
 
 
 class CZISceneFile(CziFile):
