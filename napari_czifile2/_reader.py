@@ -57,7 +57,7 @@ def reader_function_with_args(
                     viewer.add_image(data=data, **metadata)
         # load this scene_index
         with CZISceneFile(path, scene_index) as f:
-            data = f.as_tzcyx0_array(max_workers=cpu_count())
+            data = f.as_tzcyx0_array(maxworkers=cpu_count())
             # https://github.com/BodenmillerGroup/napari-czifile2/issues/5
             contrast_limits = None
             if data.dtype == np.uint16:
